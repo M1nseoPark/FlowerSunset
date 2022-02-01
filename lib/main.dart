@@ -27,68 +27,129 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('title'),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+        body: Container(
+          child: Center(
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(text: '안녕하세요,\n', style: TextStyle(color: Colors.black, fontSize: 30,)),
+                              TextSpan(text: '홍길동 님', style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Image.asset('repo/images/profile.png', width: 80,),
+                    ],
+                  ),
+
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: SizedBox(
+                          height: 100,
+                          width: 80,
+                          child: Container(color: Color(0xff82B432),),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: SizedBox(
+                          height: 100,
+                          width: 80,
+                          child: Container(color: Color(0xff82B432),),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: SizedBox(
+                          height: 100,
+                          width: 80,
+                          child: Container(color: Color(0xff82B432),),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(text: '홍길동 님의 ', style: TextStyle(color: Colors.black, fontSize: 20,)),
+                          TextSpan(text: '후원 내역', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Text(
+                          '3건',
+                          style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            '30,000원',
+                            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                          )
+                      ),
+                    ],
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(text: '홍길동 님이 ', style: TextStyle(color: Colors.black, fontSize: 20,)),
+                          TextSpan(text: '후원한 분', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Image.asset(
+                          'repo/images/profile.png',
+                          width: 70,),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Image.asset(
+                          'repo/images/profile.png',
+                          width: 70,),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Image.asset(
+                          'repo/images/profile.png',
+                          width: 70,),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          ),
+        )
     );
   }
 }

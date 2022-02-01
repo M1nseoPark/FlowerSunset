@@ -64,12 +64,24 @@ class _LoginPage extends State<LoginPage> {
                       ),),
                   ),
 
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      '아직 계정이 없으신가요?',
-                      style: TextStyle(color: Color(0xff838383), fontSize: 15),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          '아직 계정이 없으신가요?',
+                          style: TextStyle(color: Color(0xff838383), fontSize: 15),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          '  가입하기',
+                          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
