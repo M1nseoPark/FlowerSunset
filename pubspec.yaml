@@ -62,6 +62,9 @@ flutter:
     - repo/images/logo.png
     - repo/images/logo_2.png
     - repo/images/profile.png
+    - repo/images/airpods_case.png
+    - repo/images/earrings.png
+    - repo/images/plant.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -10,22 +10,34 @@ class DonateList extends StatelessWidget {
     return Scaffold(
         body: Container(
           child: Center(
-            child: ListView.builder(itemBuilder: (context, position) {
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Image.asset(
-                      list![position].imagePath!,
-                      height: 100,
-                      width: 100,
-                      fit: BoxFit.contain,
-                    ),
-                    Text(list![position].seniorName!)
-                  ],
-                ),
-              );},
-              itemCount: list!.length,
-            ),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: 280,
+                    height: 100,
+                    child: Container( color: Color(0xffF87366)),
+                  ),
+                  ListView.builder(itemBuilder: (context, position) {
+                    return Card(
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(
+                            list![position].imagePath!,
+                            height: 90,
+                            width: 90,
+                            fit: BoxFit.contain,
+                          ),
+                          Text(list![position].seniorName!),
+                          Text(list![position].seniorDetail!),
+                        ],
+                      ),
+                    );},
+                    itemCount: list!.length,
+                  ),
+                ]
+            )
+
           ),
         )
     );
