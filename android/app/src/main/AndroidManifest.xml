@@ -30,5 +30,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.google.android.gms.ads.ca-app-pub-5402180914574622~4744673606"
+            android:value="### 애드몹 앱 ID ###"/>
     </application>
 </manifest>

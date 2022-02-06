@@ -1,5 +1,3 @@
-import 'package:flower_sunset/donateDatail_1.dart';
-import 'package:flower_sunset/donateDetail_2.dart';
 import 'package:flutter/material.dart';
 
 
@@ -33,6 +31,7 @@ class _DonateDetail extends State<DonateDetail> with SingleTickerProviderStateMi
       ),
       extendBodyBehindAppBar: true,
       body: Container(
+        color: Colors.black,
         child: Center(
           child: CustomScrollView(
                 slivers: <Widget>[
@@ -57,7 +56,7 @@ class _DonateDetail extends State<DonateDetail> with SingleTickerProviderStateMi
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                              padding: EdgeInsets.fromLTRB(0, 17, 0, 10),
                               child: Container(
                                 width: 90,
                                 height: 4,

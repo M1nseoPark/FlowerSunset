@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "698005893576",
+    "project_id": "flowersunset-f64ab",
+    "storage_bucket": "flowersunset-f64ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698005893576:android:aa2e2d68609fb65c1b90fd",
+        "android_client_info": {
+          "package_name": "com.example.flower_sunset"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698005893576-u2fjiq5hua99o3k846dgfc3v2g4istft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANrTHZ-gzVKGvLdpz-SoQhR5PwjKC6Py4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698005893576-u2fjiq5hua99o3k846dgfc3v2g4istft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
