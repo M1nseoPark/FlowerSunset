@@ -1,5 +1,6 @@
 import 'package:flower_sunset/intro.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'donateItem.dart';
 import 'donateList.dart';
 import 'shopping.dart';
@@ -9,7 +10,8 @@ import 'home.dart';
 // realtime 데이터베이스 주소 - https://flowersunset-f64ab-default-rtdb.firebaseio.com/
 // admop 앱 ID - ca-app-pub-5402180914574622~4744673606
 
-void main() {
+void main() async {
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
