@@ -45,16 +45,18 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  firebase_core: ^1.12.0
+  firebase_core: ^1.11.0
   firebase_analytics: ^9.1.0
   firebase_database: ^9.0.6
   firebase_messaging: ^11.2.6
+  fireflutter: ^0.2.12
   http: ^0.13.4
   sqflite: ^2.0.2
   path: ^1.8.0
   shared_preferences: ^2.0.13
   crypto: ^3.0.1
   google_maps_flutter: ^2.1.1
+  location: ^4.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

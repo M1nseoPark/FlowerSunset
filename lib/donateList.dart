@@ -1,90 +1,139 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'donateItem.dart';
 
-class DonateList extends StatelessWidget {
-  final List<Senior>? list;
-  DonateList({Key? key, this.list}) : super(key: key);
+
+class DonateList extends StatefulWidget {
+  @override
+  State<DonateList> createState() => _DonateList();
+}
+
+class _DonateList extends State<DonateList> {
+  // final List<Senior>? list;
+  // DonateList({Key? key, this.list}) : super(key: key);
+
+  double lat = 0;
+  double lng = 0;
+  Location location = new Location();
+  bool _serviceEnabled = true;
+  late PermissionStatus _permissionGranted;
+
+  _locateMe() async {
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+    await location.getLocation().then((value) {
+      setState(() {
+        lat = value.latitude!;
+        lng = value.longitude!;
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('삼익아파트 112동',
+        title: Text(
+          '$lat $lng',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 19),),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.my_location_outlined,
+              color: Colors.black,
+            ),
+            onPressed: () => _locateMe(),)
+        ],
       ),
       body: Container(
-          child: Center(
-            // child: Column(
-                // children: <Widget>[
-                //   Padding(
-                //     padding: EdgeInsets.only(top: 10),
-                //     child: Center(
-                //       child: Container(
-                //           width: 310,
-                //           height: 160,
-                //           decoration: BoxDecoration(
-                //               color: Color(0xffF87366),
-                //               borderRadius: BorderRadius.circular(15)
-                //           ),
-                //           child: Column(
-                //             mainAxisAlignment: MainAxisAlignment.center,
-                //             children: <Widget>[
-                //               Text(
-                //                   '내 위치 근처 나눔 추천',
-                //                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-                //               ),
-                //               Padding(
-                //                 padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                //                 child: Text(
-                //                   '원포원 기부를 통해 따뜻한 마음을 전해요',
-                //                   style: TextStyle(color: Colors.white, fontSize: 15),
-                //                 ),
-                //               ),
-                //               SizedBox(
-                //                 width: 130,
-                //                 height: 42,
-                //                 child: ElevatedButton(
-                //                   style: ElevatedButton.styleFrom(primary: Colors.white),
-                //                   child: const Text('자세히', style: TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),),
-                //                   onPressed: (){},
-                //                 ),)
-                //             ],
-                //           )
-                //       ),
-                //     )
-                //   ),
+        child: Center(
+          // child: Column(
+          // children: <Widget>[
+          //   Padding(
+          //     padding: EdgeInsets.only(top: 10),
+          //     child: Center(
+          //       child: Container(
+          //           width: 310,
+          //           height: 160,
+          //           decoration: BoxDecoration(
+          //               color: Color(0xffF87366),
+          //               borderRadius: BorderRadius.circular(15)
+          //           ),
+          //           child: Column(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: <Widget>[
+          //               Text(
+          //                   '내 위치 근처 나눔 추천',
+          //                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+          //               ),
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+          //                 child: Text(
+          //                   '원포원 기부를 통해 따뜻한 마음을 전해요',
+          //                   style: TextStyle(color: Colors.white, fontSize: 15),
+          //                 ),
+          //               ),
+          //               SizedBox(
+          //                 width: 130,
+          //                 height: 42,
+          //                 child: ElevatedButton(
+          //                   style: ElevatedButton.styleFrom(primary: Colors.white),
+          //                   child: const Text('자세히', style: TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),),
+          //                   onPressed: (){},
+          //                 ),)
+          //             ],
+          //           )
+          //       ),
+          //     )
+          //   ),
 
-                    child: ListView.builder(itemBuilder: (context, position) {
-                      return Card(
-                        child: Row(
-                          children: <Widget>[
-                            Image.asset(
-                              list![position].imagePath!,
-                              height: 90,
-                              width: 90,
-                              fit: BoxFit.contain,
-                            ),
-                            Column(
-                              children: <Widget>[
-                                Text(list![position].seniorName!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                                Text(list![position].seniorDetail!, style: TextStyle(fontSize: 15, color: Color(0xff838383)),),
-                              ]
-                            )
-                          ],
-                        ),
-                      );},
-                      itemCount: list!.length,
-                    ),
-                  // ]
-            ),
-                  
+          // child: ListView.builder(itemBuilder: (context, position) {
+          //   return Card(
+          //     child: Row(
+          //       children: <Widget>[
+          //         Image.asset(
+          //           list![position].imagePath!,
+          //           height: 90,
+          //           width: 90,
+          //           fit: BoxFit.contain,
+          //         ),
+          //         Column(
+          //           children: <Widget>[
+          //             Text(list![position].seniorName!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+          //             Text(list![position].seniorDetail!, style: TextStyle(fontSize: 15, color: Color(0xff838383)),),
+          //           ]
+          //         )
+          //       ],
+          //     ),
+          //   );},
+          //   itemCount: list!.length,
+          // ),
+          // ]
+        ),
 
-            // )
 
-          ),
+        // )
+
+      ),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:crypto/crypto.dart';
+import 'package:flower_sunset/data/user.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -29,7 +30,6 @@ class _LoginPage extends State<LoginPage> {
 
     _idTextController = TextEditingController();
     _pwTextController = TextEditingController();
-
 
     // _animationController = AnimationController(duration: Duration(seconds: 3), vsync: this);
     // _animation = Tween<double>(begin: 0, end: pi * 2).animate(_animationController!);
@@ -75,8 +75,10 @@ class _LoginPage extends State<LoginPage> {
                         width: 280,
                         height: 60,
                         child: TextField(
+                          controller: _idTextController,
+                          maxLines: 1,
                           decoration: InputDecoration(
-                            hintText: '이메일 주소',
+                            hintText: '아이디',
                             border: OutlineInputBorder(),
                           ),
                         )
@@ -88,6 +90,9 @@ class _LoginPage extends State<LoginPage> {
                         width: 280,
                         height: 60,
                         child: TextField(
+                          controller: _pwTextController,
+                          obscureText: true,
+                          maxLines: 1,
                           decoration: InputDecoration(
                             hintText: '비밀번호',
                             border: OutlineInputBorder(),
@@ -96,6 +101,8 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
 
+
+                  // ##### 로그인 버튼 #####
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: SizedBox(
@@ -104,10 +111,44 @@ class _LoginPage extends State<LoginPage> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: Color(0xffF87366)),
                         child: const Text('LOGIN', style: TextStyle(fontSize: 20),),
-                        onPressed: (){},
+                        onPressed: () {
+                        //   if (_idTextController!.value.text.length == 0 ||
+                        //     _pwTextController!.value.text.length == 0) {
+                        //     makeDialog('빈칸이 있습니다');
+                        //   }
+                        //   else {
+                        //     reference!
+                        //         .child(_idTextController!.value.text)
+                        //         .onValue
+                        //         .listen((event) {
+                        //           if (event.snapshot.value == null) {
+                        //             makeDialog('아이디가 없습니다');
+                        //           }
+                        //           else {
+                        //             reference!
+                        //                 .child(_idTextController!.value.text)
+                        //                 .onChildAdded
+                        //                 .listen((event) {
+                        //                   User user = User.fromSnapshot(event.snapshot);
+                        //                   var bytes = utf8.encode(_pwTextController!.value.text);
+                        //                   var digest = sha1.convert(bytes);
+                        //                   if (user.pw == digest.toString()) {
+                        //                     Navigator.of(context).pushReplacementNamed('/home',
+                        //                       arguments: _idTextController!.value.text);
+                        //                   }
+                        //                   else {
+                        //                     makeDialog('비밀번호가 틀립니다');
+                        //                   }
+                        //             });
+                        //           }
+                        //     });
+                        //   }
+                        },
                       ),),
                   ),
 
+
+                  // ##### 회원가입 버튼 #####
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -120,9 +161,12 @@ class _LoginPage extends State<LoginPage> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          '  가입하기',
-                          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/sign');
+                          },
+                          child: Text('  가입하기',
+                            style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),),
                         ),
                       ),
                     ],

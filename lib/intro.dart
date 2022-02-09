@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flower_sunset/donateDetail.dart';
 import 'package:flower_sunset/login.dart';
 import 'package:flower_sunset/main.dart';
-import 'package:flower_sunset/signUp.dart';
+import 'package:flower_sunset/sign.dart';
 import 'package:flutter/material.dart';
 
 
@@ -25,7 +25,7 @@ class _IntroPage extends State<IntroPage> {
   onDoneLoading() async {
     // Navigator - 페이지 이동
     // 현재 페이지를 스택에 남겨놓고 MyHomePage로 이동
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MyHomePage()));
   }
 
   @override

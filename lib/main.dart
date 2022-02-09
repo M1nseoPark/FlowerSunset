@@ -1,6 +1,9 @@
 import 'package:flower_sunset/intro.dart';
+import 'package:flower_sunset/login.dart';
+import 'package:flower_sunset/sign.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'donateItem.dart';
 import 'donateList.dart';
 import 'shopping.dart';
@@ -11,8 +14,11 @@ import 'home.dart';
 // admop 앱 ID - ca-app-pub-5402180914574622~4744673606
 
 void main() async {
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,10 +28,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flower Sunset',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => LoginPage(),
+      //   '/sign': (context) => SignUpPage(),
+      //   '/home': (context) => HomePage(),
+      // },
       home: IntroPage(),
     );
   }
@@ -68,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
         body: TabBarView(
-          children: <Widget>[HomePage(), DonateList(list: seniorList), ShoppingPage(), MyPage(),],
+          children: <Widget>[HomePage(), DonateList(), ShoppingPage(), MyPage(),],
+          // list: seniorList
           controller: controller,
         ),
         bottomNavigationBar: TabBar(tabs: <Tab>[
