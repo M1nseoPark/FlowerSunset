@@ -78,29 +78,33 @@ class _DonateList extends State<DonateList> {
                         color: Color(0xffF87366),
                         borderRadius: BorderRadius.circular(15)
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '내 위치 근처 나눔 추천',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                          child: Text(
-                            '원포원 기부를 통해 따뜻한 마음을 전해요',
-                            style: TextStyle(color: Colors.white, fontSize: 15),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '내 위치 근처 나눔 추천',
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                        ),
-                        SizedBox(
-                          width: 130,
-                          height: 42,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(primary: Colors.white),
-                            child: const Text('자세히', style: TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),),
-                            onPressed: (){},
-                          ),)
-                      ],
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                            child: Text(
+                              '원포원 기부를 통해 따뜻한 마음을 전해요',
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 130,
+                            height: 42,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(primary: Colors.white),
+                              child: const Text('자세히', style: TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),),
+                              onPressed: (){},
+                            ),)
+                        ],
+                      ),
                     )
                 ),
                 Expanded(child: _createSeniorList(),)
