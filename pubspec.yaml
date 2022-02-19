@@ -79,6 +79,10 @@ flutter:
     - repo/images/plant.png
     - repo/images/test_image.jpg
     - repo/images/money.png
+    - repo/images/direction_back.jpg
+    - repo/images/money_pink.png
+    - repo/images/shopping_pink.png
+    - repo/images/plant_pink.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
