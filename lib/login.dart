@@ -60,6 +60,13 @@ class _LoginPage extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // AnimatedBuilder(
+                  //     animation: _animationController!,
+                  //     builder: (context, widget) {
+                  //       return Transform.rotate(
+                  //           angle: _animation!.value,
+                  //           child: widget,);
+                  //     })
                   Image.asset('repo/images/logo.png', width: 70,),
                   Padding(
                     padding: EdgeInsets.all(10),
@@ -112,37 +119,37 @@ class _LoginPage extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(primary: Color(0xffF87366)),
                         child: const Text('LOGIN', style: TextStyle(fontSize: 20),),
                         onPressed: () {
-                        //   if (_idTextController!.value.text.length == 0 ||
-                        //     _pwTextController!.value.text.length == 0) {
-                        //     makeDialog('빈칸이 있습니다');
-                        //   }
-                        //   else {
-                        //     reference!
-                        //         .child(_idTextController!.value.text)
-                        //         .onValue
-                        //         .listen((event) {
-                        //           if (event.snapshot.value == null) {
-                        //             makeDialog('아이디가 없습니다');
-                        //           }
-                        //           else {
-                        //             reference!
-                        //                 .child(_idTextController!.value.text)
-                        //                 .onChildAdded
-                        //                 .listen((event) {
-                        //                   User user = User.fromSnapshot(event.snapshot);
-                        //                   var bytes = utf8.encode(_pwTextController!.value.text);
-                        //                   var digest = sha1.convert(bytes);
-                        //                   if (user.pw == digest.toString()) {
-                        //                     Navigator.of(context).pushReplacementNamed('/home',
-                        //                       arguments: _idTextController!.value.text);
-                        //                   }
-                        //                   else {
-                        //                     makeDialog('비밀번호가 틀립니다');
-                        //                   }
-                        //             });
-                        //           }
-                        //     });
-                        //   }
+                          if (_idTextController!.value.text.length == 0 ||
+                            _pwTextController!.value.text.length == 0) {
+                            makeDialog('빈칸이 있습니다');
+                          }
+                          else {
+                            reference!
+                                .child(_idTextController!.value.text)
+                                .onValue
+                                .listen((event) {
+                                  if (event.snapshot.value == null) {
+                                    makeDialog('아이디가 없습니다');
+                                  }
+                                  else {
+                                    reference!
+                                        .child(_idTextController!.value.text)
+                                        .onChildAdded
+                                        .listen((event) {
+                                          User user = User.fromSnapshot(event.snapshot);
+                                          var bytes = utf8.encode(_pwTextController!.value.text);
+                                          var digest = sha1.convert(bytes);
+                                          if (user.pw == digest.toString()) {
+                                            Navigator.of(context).pushReplacementNamed('/home',
+                                              arguments: _idTextController!.value.text);
+                                          }
+                                          else {
+                                            makeDialog('비밀번호가 틀립니다');
+                                          }
+                                    });
+                                  }
+                            });
+                          }
                         },
                       ),),
                   ),

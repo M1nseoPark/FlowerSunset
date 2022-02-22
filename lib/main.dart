@@ -1,9 +1,10 @@
 import 'package:flower_sunset/intro.dart';
 import 'package:flower_sunset/login.dart';
-import 'package:flower_sunset/sign.dart';
+import 'package:flower_sunset/signPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+// import 'firebase_options.dart';
 import 'donateItem.dart';
 import 'donateList.dart';
 import 'shopping.dart';
@@ -15,9 +16,10 @@ import 'home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  MobileAds.instance.initialize();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(MyApp());
 }
 
