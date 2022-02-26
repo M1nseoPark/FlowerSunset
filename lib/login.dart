@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flower_sunset/signPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:crypto/crypto.dart';
@@ -31,10 +32,6 @@ class _LoginPage extends State<LoginPage> {
     _idTextController = TextEditingController();
     _pwTextController = TextEditingController();
 
-    // _animationController = AnimationController(duration: Duration(seconds: 3), vsync: this);
-    // _animation = Tween<double>(begin: 0, end: pi * 2).animate(_animationController!);
-    // _animationController!.repeat();
-
     Timer(Duration(seconds: 2), () {
       setState(() {
         opacity = 1;
@@ -60,16 +57,12 @@ class _LoginPage extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // AnimatedBuilder(
-                  //     animation: _animationController!,
-                  //     builder: (context, widget) {
-                  //       return Transform.rotate(
-                  //           angle: _animation!.value,
-                  //           child: widget,);
-                  //     })
-                  Image.asset('repo/images/logo.png', width: 70,),
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.fromLTRB(0, 0, 200, 0),
+                    child: Image.asset('repo/images/logo.png', width: 70,),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(12, 12, 180, 12),
                     child: Text(
                       'Sign In',
                       style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
@@ -111,7 +104,7 @@ class _LoginPage extends State<LoginPage> {
 
                   // ##### 로그인 버튼 #####
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: SizedBox(
                       width: 280,
                       height: 50,
@@ -159,22 +152,27 @@ class _LoginPage extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
+                      Text(
                           '아직 계정이 없으신가요?',
                           style: TextStyle(color: Color(0xff838383), fontSize: 15),
-                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: TextButton(
+                      TextButton(
                           onPressed: () {
                             Navigator.of(context).pushNamed('/sign');
                           },
-                          child: Text('  가입하기',
-                            style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),),
-                        ),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SignUpPage())
+                              );
+                            },
+                            child: Text(
+                              '가입하기', //title
+                              // textAlign: TextAlign.end,
+                              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ),
                       ),
                     ],
                   )

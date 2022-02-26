@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'directionPage.dart';
 import 'donateItem.dart';
 
 
@@ -101,7 +102,12 @@ class _DonateList extends State<DonateList> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(primary: Colors.white),
                               child: const Text('자세히', style: TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold),),
-                              onPressed: (){},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Direction())
+                                );
+                              },
                             ),)
                         ],
                       ),
