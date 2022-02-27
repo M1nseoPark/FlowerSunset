@@ -23,6 +23,7 @@ class _SignUpPage extends State<SignUpPage> {
   @override
   void initState() {
     super.initState();
+
     _nameTextController = TextEditingController();
     _idTextController = TextEditingController();
     _pwTextController = TextEditingController();
