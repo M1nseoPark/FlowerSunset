@@ -1,8 +1,6 @@
 package com.minseo.flowersunset;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -11,8 +9,6 @@ import android.util.Log;
 import com.google.android.material.tabs.TabLayout;
 
 public class ShoppingList extends AppCompatActivity {
-
-    Toolbar toolbar;
 
     PlantList fragment1;
     GoodsList fragment2;
