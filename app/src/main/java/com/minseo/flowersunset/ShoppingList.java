@@ -14,31 +14,22 @@ public class ShoppingList extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    Fragment1 fragment1;
-    Fragment2 fragment2;
-    Fragment3 fragment3;
+    PlantList fragment1;
+    GoodsList fragment2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopping_list);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-
-        fragment1 = new Fragment1();
-        fragment2 = new Fragment2();
-        fragment3 = new Fragment3();
+        fragment1 = new PlantList();
+        fragment2 = new GoodsList();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
         TabLayout tabs = findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("통화기록"));
-        tabs.addTab(tabs.newTab().setText("스팸기록"));
-        tabs.addTab(tabs.newTab().setText("연락처"));
+        tabs.addTab(tabs.newTab().setText("식물"));
+        tabs.addTab(tabs.newTab().setText("굿즈"));
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -50,8 +41,6 @@ public class ShoppingList extends AppCompatActivity {
                     selected = fragment1;
                 } else if (position == 1) {
                     selected = fragment2;
-                } else if (position == 2) {
-                    selected = fragment3;
                 }
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, selected).commit();
