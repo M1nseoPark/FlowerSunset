@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,5 +48,14 @@ public class PlantDetail extends AppCompatActivity {
             tvPrice.setText("12000원");
             tvDetail.setText("몬스테라답게 실내 공기효과도 탁월하고 초보자분들도 부담없이 키우실 수 있습니다\n\n생존을 위해 스스로 잎을 만들어내는 자연의 신비가 느껴지는 식물로, 모든 잎이 찢어져 나온다는 것이 특징인 고급스러운 품종입니다.");
         }
+
+        Button btBuy = (Button) findViewById(R.id.btBuy);
+        btBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
