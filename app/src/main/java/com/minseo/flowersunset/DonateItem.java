@@ -8,23 +8,20 @@ public class DonateItem {
     private int donateId;
     private String donateName;
     private String donateDetail;
-    private String donateAddress;
-    private double donateLatitude;
-    private double donateLongitude;
-    private String donateIntro;
+//    private String donateAddress;
+//    private double donateLatitude;
+//    private double donateLongitude;
+//    private String donateIntro;
     private String donateImage;
-    private String donateDImage;
+//    private String donateDImage;
 
-    public DonateItem(String name, String degree, int id, String logo, double latitude, double longitude){
+    public DonateItem(String name, String detail, String image){
         this.donateName = name;
-        this.donateDetail = degree;
-        this.donateId = id;
-        this.donateImage = logo;
-        this.donateLatitude = latitude;
-        this.donateLongitude = longitude;
+        this.donateDetail = detail;
+        this.donateImage = image;
     }
 
-    public String getDonateLogo() {
+    public String getDonateImage() {
         return this.donateImage;
     }
     public String getDonateName() {
@@ -33,5 +30,4 @@ public class DonateItem {
     public String getDonateDetail() {
         return this.donateDetail;
     }
-    public int getDonateId() { return this.donateId; }
 }

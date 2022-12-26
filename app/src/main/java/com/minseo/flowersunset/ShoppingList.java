@@ -1,29 +1,30 @@
 package com.minseo.flowersunset;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class ShoppingList extends AppCompatActivity {
+public class ShoppingList extends Fragment {
 
     PlantList fragment1;
     GoodsList fragment2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.shopping_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.shopping_list, container, false);
 
         fragment1 = new PlantList();
         fragment2 = new GoodsList();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+        getParentFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
-        TabLayout tabs = findViewById(R.id.tabs);
+        TabLayout tabs = view.findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("식물"));
         tabs.addTab(tabs.newTab().setText("굿즈"));
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -38,7 +39,7 @@ public class ShoppingList extends AppCompatActivity {
                 } else if (position == 1) {
                     selected = fragment2;
                 }
-                getSupportFragmentManager().beginTransaction()
+                getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, selected).commit();
             }
 
@@ -51,6 +52,6 @@ public class ShoppingList extends AppCompatActivity {
             }
         });
 
+        return view;
     }
-
 }

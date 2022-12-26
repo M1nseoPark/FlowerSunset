@@ -58,7 +58,7 @@ public class DonateListAdapter extends BaseAdapter {
         //데이터 값 표시하기
         view.setName(item.getDonateName());
         view.setDetail(item.getDonateDetail());
-        view.setImage(item.getDonateDetail());
+        view.setImage(item.getDonateImage());
 
         return view;
     }

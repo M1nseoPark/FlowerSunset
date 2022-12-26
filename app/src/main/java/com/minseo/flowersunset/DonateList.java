@@ -51,6 +51,8 @@ public class DonateList extends Fragment {
                 String introduce = cursor.getString(6);
                 String image = cursor.getString(7);
                 String dimage = cursor.getString(8);
+
+                adapter.addItem(new DonateItem(name, detail, image));
             }
             cursor.close();
         } else {
@@ -64,9 +66,8 @@ public class DonateList extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getActivity(), DonateDetail.class);
                 DonateItem item = (DonateItem) adapter.getItem(i);
-                String id = String.valueOf(item.getDonateId());
-                Log.v(TAG, "id는" + id);
-                intent.putExtra("id", id);
+//                String id = String.valueOf(item.getDonateId());
+//                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
