@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class DonateList extends Fragment {
@@ -28,10 +29,20 @@ public class DonateList extends Fragment {
         View view = inflater.inflate(R.layout.donate_list, container, false);
         // 초기화, 참조 및 생성
         donateList = (ListView) view.findViewById(android.R.id.list);
+        Button btDetail = (Button) view.findViewById(R.id.btDetail);
         openDB();
 
         // 리스트뷰 참조 및 Adapter 연결
         adapter = new DonateListAdapter(getActivity());
+
+        // 자세히 버튼 클릭하면
+        btDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DonateExplain.class);
+                startActivity(intent);
+            }
+        });
 
         // 맨 처음 초기화 데이터 보여주기 (select)
         if (database != null) {
