@@ -15,10 +15,11 @@ public class DonateItem {
     private String donateImage;
 //    private String donateDImage;
 
-    public DonateItem(String name, String detail, String image){
+    public DonateItem(String name, int id, String detail, String image){
         this.donateName = name;
         this.donateDetail = detail;
         this.donateImage = image;
+        this.donateId = id;
     }
 
     public String getDonateImage() {
@@ -30,4 +31,5 @@ public class DonateItem {
     public String getDonateDetail() {
         return this.donateDetail;
     }
+    public int getDonateId() { return this.donateId; }
 }

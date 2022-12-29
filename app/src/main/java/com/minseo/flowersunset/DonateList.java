@@ -47,7 +47,7 @@ public class DonateList extends Fragment {
         // 맨 처음 초기화 데이터 보여주기 (select)
         if (database != null) {
             String tableName = "senior";
-            String query = "select id, name, detail, address, latitude, longitude, introduce, image, dimage from "+tableName;
+            String query = "select id, name, detail, address, latitude, longitude, image from "+tableName;
             Cursor cursor = database.rawQuery(query, null);
             Log.v(TAG, "조회된 데이터 수 : " + cursor.getCount());
 
@@ -59,11 +59,9 @@ public class DonateList extends Fragment {
                 String address = cursor.getString(3);
                 double latitude = cursor.getDouble(4);
                 double longitude = cursor.getDouble(5);
-                String introduce = cursor.getString(6);
-                String image = cursor.getString(7);
-                String dimage = cursor.getString(8);
+                String image = cursor.getString(6);
 
-                adapter.addItem(new DonateItem(name, detail, image));
+                adapter.addItem(new DonateItem(name, id, detail, image));
             }
             cursor.close();
         } else {
@@ -77,8 +75,8 @@ public class DonateList extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getActivity(), DonateDetail.class);
                 DonateItem item = (DonateItem) adapter.getItem(i);
-//                String id = String.valueOf(item.getDonateId());
-//                intent.putExtra("id", id);
+                String id = String.valueOf(item.getDonateId());
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -90,9 +88,6 @@ public class DonateList extends Fragment {
         Log.v(TAG, "openDB() 실행");
         DatabaseHelper helper = new DatabaseHelper(getContext());
         database = helper.getWritableDatabase();
-
-
-        //Log.v(Double.toString(myLatitude), "위도");
 
         if (database != null) {
             Log.v(TAG, "DB 열기 성공!");
